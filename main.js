@@ -112,12 +112,14 @@ fs.readFile("b_better_start_small.in.txt", "utf8", (err, data) => {
           
           // console.log('//////////////' , contributer.name ,' ', skill.skill , ' ' , skillNedded)
            //if (skillNedded) console.log("skillNedded" , skillNedded.skillLevel , ' ' , skill.skillLevel)
-           if (skillNedded && (skillNedded.skillLevel >= skill.skillLevel || (skillNedded.skillLevel + 1)  === skill.skillLevel ) && !affecteddev.find(e=>e.coder === key3)){
+           if (skillNedded && (skillNedded.skillLevel >= skill.skillLevel ) && !affecteddev.find(e=>e.coder === key3)){
+               if (affecteddev.find(e=>e.coder === key3)) console.log('//////////' , affecteddev)
                affecteddev.push({
                coder: key3,
                skl: contributersList[key3].skills.indexOf(skillNedded),
-               add: skillNedded.skillLevel === skill.skillLevel || ((skillNedded.skillLevel + 1)  === skill.skillLevel) ,
+               add: skillNedded.skillLevel === skill.skillLevel,
              });
+             console.log('//////////=================>' , affecteddev)
             find = true ; 
           }
              key3 += 1; 
@@ -155,7 +157,7 @@ fs.readFile("b_better_start_small.in.txt", "utf8", (err, data) => {
         projectsList.splice(currentProject, 1);
         console.log("projects removed " , currentProject)
       }else{
-          //console.log("no"); 
+          console.log("no"); 
       }
     });
   }
